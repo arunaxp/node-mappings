@@ -15,6 +15,7 @@
     "node": ">=11.14"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
     "express": "^4.17.1",
     "handlebars": "^4.7.4"
   },

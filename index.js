@@ -1,15 +1,68 @@
-const express = require('express')
-const hbs = require('hbs')
-const routes = require('./routes/routes')
-const path = require('path')
-const app = express()
-const PORT = 3000
+const express = require('express');
+const {readFileSync} = require('fs');
+const handlebars = require('handlebars');
 
-app.set('view engine', hbs)
-app.use('/', routes)
-app.use(express.static(path.join(__dirname, '/public')))
+const app = express();
+// Serve the files in /assets at the URI /assets.
+app.use('/assets', express.static('assets'));
 
+// The HTML content is produced by rendering a handlebars template.
+// The template values are stored in global state for reuse.
+const data = {
+  service: process.env.K_SERVICE || '???',
+  revision: process.env.K_REVISION || '???',
+};
+let template;
+
+app.get('/test', async (req, res) => {
+  // The handlebars template is stored in global state so this will only once.
+  if (!template) {
+    // Load Handlebars template from filesystem and compile for use.
+    try {
+      template = handlebars.compile(readFileSync('index.html.hbs', 'utf8'));
+    } catch (e) {
+      console.error(e);
+      res.status(500).send('Internal Server Error');
+    }
+  }
+
+  // Apply the template to the parameters to generate an HTML string.
+  try {
+    const output = template(data);
+    res.status(200).send(output);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/', async (req, res) => {
+  // The handlebars template is stored in global state so this will only once.
+  if (!template) {
+    // Load Handlebars template from filesystem and compile for use.
+    try {
+      template = handlebars.compile(
+        readFileSync('./hbs/sample.html.hbs', 'utf8')
+      );
+    } catch (e) {
+      console.error(e);
+      res.status(500).send('Internal Server Error');
+    }
+  }
+
+  // Apply the template to the parameters to generate an HTML string.
+  try {
+    const output = template(data);
+    res.status(200).send(output);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`app is running on PORT ${PORT}`)
-})
-module.exports = app
+  console.log(
+    `Hello from Cloud Run! The container started successfully and is listening for HTTP requests on ${PORT}`
+  );
+});

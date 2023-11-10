@@ -1,165 +1,58 @@
-# API with Express & Handlebar Templates
+# Cloud Run Hello World with Cloud Code
 
-> Use Express.js to create three (3) routes that consume the [API](https://nodejs.org/dist/index.json)
+"Hello World" is a [Cloud Run](https://cloud.google.com/run/docs) application that renders a simple webpage.
 
-## Installation Instructions
+For details on how to use this sample as a template in Cloud Code, read the documentation for Cloud Code for [VS Code](https://cloud.google.com/code/docs/vscode/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-) or [IntelliJ](https://cloud.google.com/code/docs/intellij/quickstart-cloud-run?utm_source=ext&utm_medium=partner&utm_campaign=CDR_kri_gcp_cloudcodereadmes_012521&utm_content=-).
 
-### To run the application
+### Table of Contents
+* [Getting Started with VS Code](#getting-started-with-vs-code)
+* [Getting Started with IntelliJ](#getting-started-with-intellij)
+* [Sign up for User Research](#sign-up-for-user-research)
 
-```bash
-npm start
-```
+---
+## Getting Started with VS Code
 
-### To run the tests
+### Run the app locally with the Cloud Run Emulator
+1. Click on the Cloud Code status bar and select 'Run on Cloud Run Emulator'.  
+![image](./img/status-bar.png)
 
-```bash
-npm test
-```
+2. Use the Cloud Run Emulator dialog to specify your [builder option](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app#deploying_a_cloud_run_service). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
+![image](./img/build-config.png)
 
-## Goals
+3. Click ‘Run’. Cloud Code begins building your image.
 
-1. Fetch data from an API and serve JSON content as response
-2. Render out data using dynamic template files
-3. Identify and write useful tests
+4. View the build progress in the OUTPUT window. Once the build has finished, click on the URL in the OUTPUT window to view your live application.  
+![image](./img/cloud-run-url.png)
 
-### Routes
+5. To stop the application, click the stop icon on the Debug Toolbar.
 
-#### GET - dependencies
+---
+## Getting Started with IntelliJ
 
-This will retrieve all dependencies from the `package.json` and render HTML using handlebars.
+### Run the app locally with the Cloud Run Emulator
 
-##### Example Response - `/dependencies`
+#### Define run configuration
 
-```html
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-  </head>
-  <body>
-    <ul>
-      <li>bent - ^7.3.7</li>
-      <li>express - ^4.17.1</li>
-      <li>hbs - ^4.1.1</li>
-      <li>semver - ^7.3.2</li>
-    </ul>
-  </body>
-</html>
-```
+1. Click the Run/Debug configurations dropdown on the top taskbar and select 'Edit Configurations'.  
+![image](./img/edit-config.png)
 
-#### GET - `/api/minimum-secure`
+2. Select 'Cloud Run: Run Locally' and specify your [builder option](https://cloud.google.com/code/docs/intellij/developing-a-cloud-run-app#defining_your_run_configuration). Cloud Code supports Docker, Jib, and Buildpacks. See the skaffold documentation on [builders](https://skaffold.dev/docs/pipeline-stages/builders/) for more information about build artifact types.  
+![image](./img/local-build-config.png)
 
-This will return the minimum secure version for each release line as JSON. In other words, what is the highest version of each line that has `security: true`.
+#### Run the application
+1. Click the Run/Debug configurations dropdown and select 'Cloud Run: Run Locally'. Click the run icon.  
+![image](./img/config-run-locally.png)
 
-##### Example Response `/api/minimum-secure`
+2. View the build process in the output window. Once the build has finished, you will receive a notification from the Event Log. Click 'View' to access the local URLs for your deployed services.  
+![image](./img/local-success.png)
 
-```json
-{
-   "v0": {
-       "version": "v0.12.17",
-       "date": "2016-10-18",
-       "files": [],
-       "npm": "2.15.1",
-       "v8": "3.28.71.19",
-       "uv": "1.6.1",
-       "zlib": "1.2.8",
-       "openssl": "1.0.1u",
-       "modules": "14",
-       "lts": false,
-       "security": true
-   },
-   "v4": {
-       "version": "v4.9.0",
-       "date": "2018-03-28",
-       "files": [],
-       "npm": "2.15.11",
-       "v8": "4.5.103.53",
-       "uv": "1.9.1",
-       "zlib": "1.2.11",
-       "openssl": "1.0.2o",
-       "modules": "46",
-       "lts": "Argon",
-       "security": true
-   }
-}
-```
+---
+## Sign up for User Research
 
-#### GET - `/api/latest-releases`
+We want to hear your feedback!
 
-This will return the latest release version in each release line as JSON.
+The Cloud Code team is inviting our user community to sign-up to participate in Google User Experience Research. 
 
-##### Example Response `/api/latest-releases`
+If you’re invited to join a study, you may try out a new product or tell us what you think about the products you use every day. At this time, Google is only sending invitations for upcoming remote studies. Once a study is complete, you’ll receive a token of thanks for your participation such as a gift card or some Google swag. 
 
-```json
-{
-  "v14": {
-      "version": "v14.7.0",
-      "date": "2020-07-29",
-      "files": [],
-      "npm": "6.14.7",
-      "v8": "8.4.371.19",
-      "uv": "1.38.1",
-      "zlib": "1.2.11",
-      "openssl": "1.1.1g",
-      "modules": "83",
-      "lts": false,
-      "security": false
-  },
-  "v13": {
-      "version": "v13.14.0",
-      "date": "2020-04-28",
-      "files": [],
-      "npm": "6.14.4",
-      "v8": "7.9.317.25",
-      "uv": "1.37.0",
-      "zlib": "1.2.11",
-      "openssl": "1.1.1g",
-      "modules": "79",
-      "lts": false,
-      "security": false
-  }
-}
-```
-
-### Tests
-
-Each of the above endpoints should have its own tests. Use the provided `test/index.js` file to get started and see below for example output.
-
-#### Test Requirements
-
-- Write tests using `tape`
-- Mock http requests during tests by using `nock` to prevent live requests
-
-```bash
-# should get dependencies
-  ok 1 should contain bent
-  ok 2 should contain express
-  ok 3 should contain hbs
-  ok 4 should contain semver
-
-# should get minimum secure versions
-  ok 5 v14 version should match
-  ok 6 v13 version should match
-
-# should get latest-releases
-  ok 7 v14 version should match
-  ok 8 v13 version should match
-```
-
-## Dependencies
-
-| Name                                             | Description                                                       |
-| ------------------------------------------------ | ----------------------------------------------------------------- |
-| [bent](https://www.npmjs.com/package/bent)       | Functional HTTP client for Node.js and Browsers with async/await. |
-| [express](https://www.npmjs.com/package/express) | Fast, unopinionated, minimalist web framework for node.           |
-| [hbs](https://www.npmjs.com/package/hbs)         | Express.js view engine for handlebars.js                          |
-| [semver](https://www.npmjs.com/package/semver)   | The semantic versioner for npm                                    |
-
-### Development dependencies
-
-| Name                                               | Description                                              |
-| -------------------------------------------------- | -------------------------------------------------------- |
-| [get-port](https://www.npmjs.com/package/get-port) | Get an available TCP port                                |
-| [nock](https://www.npmjs.com/package/nock)         | HTTP server mocking and expectations library for Node.js |
-| [tape](https://www.npmjs.com/package/tape)         | tap-producing test harness for node and browsers         |
+[Sign up using this link](https://google.qualtrics.com/jfe/form/SV_4Me7SiMewdvVYhL?reserved=1&utm_source=In-product&Q_Language=en&utm_medium=own_prd&utm_campaign=Q1&productTag=clou&campaignDate=January2021&referral_code=UXbT481079) and answer a few questions about yourself, as this will help our research team match you to studies that are a great fit.

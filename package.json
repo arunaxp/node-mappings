@@ -4,7 +4,7 @@
   "description": "Hello World application for Cloud Run",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "lint": "eslint **.js",
     "fix": "eslint --fix *.js",
     "test": "mocha test/*.test.js --check-leaks --timeout 5000"
@@ -17,7 +17,9 @@
   "dependencies": {
     "bootstrap": "^5.3.2",
     "express": "^4.17.1",
-    "handlebars": "^4.7.4"
+    "express-handlebars": "^7.1.2",
+    "handlebars": "^4.7.4",
+    "nodemon": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "8.47.0",

@@ -32,4 +32,9 @@ app.get('/dynamic', (req, res) => {
   res.render('main', {layout: 'index', proPlayer: fakeApi()});
 });
 
-app.listen(port, () => console.log(`App listening to port ${port}`));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(
+    `Hello from Cloud Run! The container started successfully and is listening for HTTP requests on ${PORT}`
+  );
+});

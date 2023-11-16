@@ -1,0 +1,138 @@
+<article id="content" class="col-xs-12 col-md-8">
+    <!--POST-->
+    <ul>
+        {{#each data}}
+            <li>{{name}}</li>
+        {{/each}}
+    </ul>
+    <div class="post-block single-post wow fadeInUp" data-wow-delay="0.4s"
+        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+        <div class="post-holder">
+            <div class="img-holder">
+                {{!-- <img src="https://htmlbeans.com/html/dot/images/img53.jpg" alt="image description"> --}}
+            </div>
+            <time datetime="2011-01-12"><a href="#">25th May - Travel</a></time>
+            <h2>TITLE</h2>
+            <p>Para1</p>
+            <blockquote>
+                <p>quote</p>
+            </blockquote>
+            <p>Para2</p>
+            <footer>
+                <strong class="text"><span class="icon ico-user"></span><a href="#">David Ramon</a></strong>
+                {{!-- <strong class="text comment-count"><span class="icon ico-comment"></span><a href="#">25
+                        comments</a></strong>
+                <strong class="text"><span class="icon ico-tag"></span>Tag: <a href="#">travel.</a> <a
+                        href="#">life</a>, <a href="#">enjoy</a></strong>
+                <strong class="text share-count"><span class="icon ico-share"></span><a href="#">138 shares</a></strong>
+                --}}
+            </footer>
+        </div>
+    </div>
+    <section class="posts-blocks extra wow fadeInUp" data-wow-delay="0.4s"
+        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+        <header class="header">
+            <h2>Related Posts</h2>
+            <p>You may like these post too</p>
+        </header>
+        <div class="post-block single-post-block">
+            <div class="post-holder">
+                <div class="img-holder">
+                    {{!-- <a href="single-postv2.html">
+                        <img alt="image description" src="https://htmlbeans.com/html/dot/images/img55.jpg">
+                    </a> --}}
+                </div>
+                <time datetime="2011-01-12"><a href="#">25th May - Travel</a></time>
+                <h2><a href="#">Traveling is awesome if you can enjoy.</a></h2>
+            </div>
+        </div>
+        <div class="post-block single-post-block">
+            <div class="post-holder">
+                <div class="img-holder">
+                    {{!-- <a href="single-postv2.html">
+                        <img alt="image description" src="https://htmlbeans.com/html/dot/images/img55.jpg">
+                    </a> --}}
+                </div>
+                <time datetime="2011-01-12"><a href="#">25th May - Travel</a></time>
+                <h2><a href="#">Traveling is awesome if you can enjoy.</a></h2>
+            </div>
+        </div>
+    </section>
+    <section class="section comments wow fadeInUp" data-wow-delay="0.4s"
+        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+        <header class="header">
+            <h2>Comments on this post</h2>
+            <p>3 comments</p>
+        </header>
+        <!-- Comment list of the page -->
+        <div class="commentlist">
+            <!-- Comment list item of the page -->
+            <div class="commentlist-item">
+                <div class="comment even thread-even depth-1" id="comment-1">
+                    <div class="avatar-holder">
+                        <img alt="image description" src="images/img56.jpg"
+                            class="avatar avatar-48 photo avatar-default">
+                    </div>
+                    <div class="commentlist-holder">
+                        <p class="meta">
+                            <strong class="name"><a href="#">John Doe</a></strong>
+                            <a href="#"><time datetime="2011-01-12">2 hours ago</time></a>
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt laoreet dolore magna aliquam erat volutpat.</p>
+                        <p><a class="comment-reply-link"
+                                href="https://flow-attachments.s3.amazonaws.com/?p=1&amp;replytocom=1#respond"
+                                onclick="return addComment.moveForm(&quot;comment-1&quot;, &quot;1&quot;, &quot;respond&quot;, &quot;1&quot;)">REPLY</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Comment list item of the page end -->
+            <!-- Comment list item of the page -->
+            <div class="commentlist-item">
+                <div class="comment even thread-even depth-1" id="comment-2">
+                    <div class="avatar-holder">
+                        <img alt="image description" src="images/img57.jpg"
+                            class="avatar avatar-48 photo avatar-default">
+                    </div>
+                    <div class="commentlist-holder">
+                        <p class="meta">
+                            <strong class="name"><a href="#">John Doe</a></strong>
+                            <a href="#"><time datetime="2011-01-12">2 hours ago</time></a>
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt laoreet dolore magna aliquam erat volutpat.</p>
+                        <p><a class="comment-reply-link"
+                                href="https://flow-attachments.s3.amazonaws.com/?p=1&amp;replytocom=1#respond"
+                                onclick="return addComment.moveForm(&quot;comment-2&quot;, &quot;1&quot;, &quot;respond&quot;, &quot;1&quot;)">REPLY</a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Comment list item of the page -->
+                <div class="commentlist-item">
+                    <div class="comment even thread-even depth-1" id="comment-3">
+                        <div class="avatar-holder">
+                            <img alt="image description" src="images/img58.jpg"
+                                class="avatar avatar-48 photo avatar-default">
+                        </div>
+                        <div class="commentlist-holder">
+                            <p class="meta">
+                                <strong class="name"><a href="#">John Doe</a></strong>
+                                <a href="#"><time datetime="2011-01-12">2 hours ago</time></a>
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt laoreet dolore magna aliquam erat volutpat.</p>
+                            <p><a class="comment-reply-link"
+                                    href="https://flow-attachments.s3.amazonaws.com/?p=1&amp;replytocom=1#respond"
+                                    onclick="return addComment.moveForm(&quot;comment-3&quot;, &quot;1&quot;, &quot;respond&quot;, &quot;1&quot;)">REPLY</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Comment list item of the page end -->
+            </div>
+            <!-- Comment list item of the page end -->
+        </div>
+        <!-- Comment list of the page end -->
+    </section>
+</article>

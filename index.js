@@ -9,7 +9,7 @@ const handlebars = require('express-handlebars');
 
 initializeApp({
   credential: cert(serviceAcc),
-  databaseURL: 'ferrous-store-404700.firebaseio.com', //process.env.databaseURL,
+  databaseURL: process.env.databaseURL,
 });
 //Sets our app to use the handlebars engine
 app.set('view engine', 'hbs');

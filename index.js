@@ -1,6 +1,6 @@
 const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
-// const serviceAcc = require('./ferrous-store-service-account.json');
+const serviceAcc = require('./ferrous-store-service-account.json');
 const express = require('express');
 const app = express();
 
@@ -22,7 +22,7 @@ const handlebars = require('express-handlebars');
 // }
 
 initializeApp({
-  credential: cert(process.env.serviceAcc),
+  credential: cert(JSON.parse(process.env.serviceAcc)),
   databaseURL: process.env.databaseURL,
 });
 //Sets our app to use the handlebars engine
